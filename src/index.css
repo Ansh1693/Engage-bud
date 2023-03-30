@@ -1,13 +1,27 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@layer base{
+    .font-poppins{
+        font-family: 'Poppins', sans-serif;
+    }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer utilities{
+    .wheel-shadow{
+         box-shadow: 0 0 0 5px #ECBA3F, 0 0 0 15px #ECBA3F ; 
+    }
+
+    .wheel-segment{
+        clip-path: polygon(0 0, 80% 0, 100% 100% ,0 80%)
+    }
+
+    .transition-wheel{
+        transition: all 10s ease-in-out;
+    }
 }
+
+/* https://css-tricks.com/building-a-circular-navigation-with-css-clip-paths/ */
