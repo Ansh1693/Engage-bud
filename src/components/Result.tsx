@@ -32,8 +32,8 @@ const Result: React.FunctionComponent = () => {
               XAXPDF20
             </div>
             <div
-              className="p-4 bg-[#146531] flex justify-center items-center rounded-br-md rounded-tr-md cursor-pointer font-bold text-xl lg:text-2xl"
-              onClick={() => {
+              className="p-4 bg-[#146531] flex justify-center items-center z-10 rounded-br-md rounded-tr-md cursor-pointer font-bold text-xl lg:text-2xl"
+              onClick={async () => {
                 navigator.clipboard.writeText(coupon);
               }}
             >
@@ -41,9 +41,9 @@ const Result: React.FunctionComponent = () => {
             </div>
           </div>
           <div
-            className="bg-[#146531] rounded-full p-4 px-8 font-poppins font-bold text-xl text-white cursor-pointer lg:text-2xl"
-            onClick={() => {
-              navigator.clipboard.writeText(coupon);
+            className="bg-[#146531] rounded-full z-10 p-4 px-8 font-poppins font-bold text-xl text-white lg:text-2xl cursor-pointer"
+            onClick={async() => {
+              await navigator.clipboard.writeText(coupon);
               navigate('/');
             }}
           >

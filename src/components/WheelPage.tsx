@@ -17,14 +17,13 @@ const WheelPage = () => {
         let value: number = Math.ceil(Math.random() * 6000);
         const handleClick = () => {
           wheel!.classList.add("transition-wheel");
+          wheel!.classList.add("animate-blur");
           let value2: number = value % 60;
           value += 7200 + (60 - value2);
           wheel!.style.transform = `rotate(${value}deg)`;
           value2 = ((360 - value%360) / 60) + 1;
           if(value2===7) value2=1;
-            setResult(list[value2-1].name);
-            // console.log(result)
-            
+            setResult(list[value2-1].name);  
         };
     
         button?.addEventListener("click", () => {

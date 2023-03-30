@@ -15,7 +15,7 @@ function App() {
     <MyComponent>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/spin" element={<WheelPage />} />
+        {/* <Route path="/spin" element={<WheelPage />} /> */}
         <Route path="/result" element={<Result />} />
       </Routes>
     </MyComponent>
