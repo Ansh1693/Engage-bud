@@ -4,7 +4,7 @@ interface offer {
   name: string;
   index: number;
 }
-const list: Array<offer> = [
+export const list: Array<offer> = [
   {
     name: "30% SITEWIDE OFF",
     index: 1,
@@ -41,7 +41,7 @@ const Wheel = () => {
         key={props.index}
       >
         <span
-          className="text-xl p-10 text-center font-extrabold font-poppins"
+          className="text-xs p-6 text-center font-extrabold font-poppins md:text-base md:p-10 lg:p-12 lg:text-lg xl:text-xl xl:p-16"
           style={{ transform: `rotate(-48deg)` }}
         >
           {props.name}
@@ -51,11 +51,11 @@ const Wheel = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center z-10">
+    <div className="flex flex-col justify-center items-center h-full w-full z-10">
       {/* spinning wheel */}
-      <div className="relative flex w-[500px] h-[500px] m-10 justify-center items-center">
+      <div className="relative flex w-80 h-80 justify-center items-center md:h-[420px] md:w-[420px] lg:h-[500px] lg:w-[500px] xl:h-[600px] xl:w-[600px] ">
         {/* btn */}
-        <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-20 w-20 md:h-28 md:w-28 lg:w-32 lg:h-32">
           <svg
             width="95"
             height="122"
@@ -82,14 +82,14 @@ const Wheel = () => {
                   height="110"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M58.7108 37.9698L47.4234 18.4194L36.1357 37.9703C24.0186 42.5351 15.3989 54.2355 15.3989 67.9492C15.3989 85.6361 29.737 99.9742 47.4239 99.9742C65.1108 99.9742 79.4489 85.6361 79.4489 67.9492C79.4489 54.235 70.8285 42.5342 58.7108 37.9698Z"
                 />
               </mask>
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M58.7108 37.9698L47.4234 18.4194L36.1357 37.9703C24.0186 42.5351 15.3989 54.2355 15.3989 67.9492C15.3989 85.6361 29.737 99.9742 47.4239 99.9742C65.1108 99.9742 79.4489 85.6361 79.4489 67.9492C79.4489 54.235 70.8285 42.5342 58.7108 37.9698Z"
                 fill="black"
               />
@@ -111,9 +111,9 @@ const Wheel = () => {
                 width="94.6959"
                 height="121.395"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"
@@ -153,7 +153,7 @@ const Wheel = () => {
         </div>
       </div>
 
-      <button className="uppercase p-6 px-10 text-3xl font-extrabold flex-none text-white rounded-full bg-[#146531] cursor-pointer" id="onSpin">Spin</button>
+      <button className="uppercase mt-10 p-4 md:p-6  px-8 md:px-10 lg:px-12 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold flex-none text-white rounded-full bg-[#146531] cursor-pointer" id="onSpin">Spin</button>
     </div>
   );
 };

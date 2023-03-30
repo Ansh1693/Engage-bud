@@ -4,11 +4,10 @@ import TopFlower from "../assets/TopFlower";
 
 import Wheel from "../assets/Wheel";
 
-type CompenentProps={
-  name: string
-}
+import {MyContext} from "./MyContext"
 
-const Result:React.FunctionComponent<CompenentProps>  = (props) => {
+const Result:React.FunctionComponent  = () => {
+  const {result}  = React.useContext(MyContext);
   return (
     <div className="h-screen w-screen bg-[#C6EFC8] relative">
       {/* FLowers */}
@@ -20,7 +19,7 @@ const Result:React.FunctionComponent<CompenentProps>  = (props) => {
         <Wheel />
         <div className="flex flex-col items-center w-full  py-20 px-16 justify-center gap-6 lg:pr-0">
             <div className="font-poppins font-bold text-2xl md:text-3xl lg:text-4xl"><span>Congrats! You won:</span></div>
-            <div className="text-4xl font-poppins font-bold text-wrap text-center lg:text-5xl" ><span>{props.name}</span></div>
+            <div className="text-4xl font-poppins font-bold text-wrap text-center lg:text-5xl" ><span>{result}</span></div>
             <div className="flex rounded-md w-full h-1/4  p-4 justify-center  text-white">
                 <div className="bg-[#14141433] p-4 rounded-tl-md rounded-bl-md font-poppins font-bold text-3xl flex h-full lg:text-4xl">XAXPDF20</div>
                 <div className="p-4 bg-[#146531] flex justify-center items-center rounded-br-md rounded-tr-md cursor-pointer font-bold text-xl lg:text-2xl"><span className="">COPY</span></div>

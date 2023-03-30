@@ -2,7 +2,7 @@ import React from "react";
 
 const Wheel = () => {
   return (
-    <div className="z-10 w-2/5 -translate-y-[50%] md:w-7/12 md:translate-y-0 md:-translate-x-1/2 lg:translate-x-0">
+    <div className="z-10 w-2/5 -translate-y-[50%] md:w-7/12 md:translate-y-0 md:-translate-x-1/2 lg:translate-x-0 lg:w-4/12">
       <svg
         width="1082"
         height="1071"

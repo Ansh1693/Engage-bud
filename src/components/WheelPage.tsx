@@ -2,9 +2,14 @@ import React from "react";
 import BottomFlower from "../assets/BottomFlower";
 import TopFlower from "../assets/TopFlower";
 import Result from "./Result";
-import Wheel from "./Wheel";
+import Wheel ,{list}from "./Wheel";
+import { MyContext } from "./MyContext";
+import { useNavigate } from "react-router-dom";
 
 const WheelPage = () => {
+    const{result,setResult}=React.useContext(MyContext);
+    const navigate = useNavigate();
+
     React.useEffect(() => {
         const wheel = document.getElementById("wheel");
         const button = document.getElementById("onSpin");
@@ -17,7 +22,9 @@ const WheelPage = () => {
           wheel!.style.transform = `rotate(${value}deg)`;
           value2 = ((360 - value%360) / 60) + 1;
           if(value2===7) value2=1;
-          console.log(value2);
+            setResult(list[value2-1].name);
+            // console.log(result)
+            
         };
     
         button?.addEventListener("click", () => {
@@ -28,6 +35,8 @@ const WheelPage = () => {
           wheel.classList.remove("transition-wheel");
           const actualDeg: number = value % 360;
           wheel!.style.transform = `rotate(${actualDeg}deg)`;
+
+          navigate('/result')
         });
         
       }, []);

@@ -1,10 +1,57 @@
 import React from "react";
+import { useNavigate} from "react-router-dom";
 import BottomFlower from "../assets/BottomFlower";
 import TopFlower from "../assets/TopFlower";
+import { MyContext } from "./MyContext";
 
 import Wheel from "../assets/Wheel";
 
 const Home = () => {
+  const emailRef = React.useRef<HTMLInputElement>(null);
+  const mobileRef = React.useRef<HTMLInputElement>(null);
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const navigate  = useNavigate();
+  const [isValidMobileNumber,setIsValidMobileNumber]= React.useState<boolean>(false);
+
+  const handleMobileNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.target.value;
+    const isValid = /^(\+?\d{1,3}[- ]?)?\d{10}$/.test(input);
+    setIsValidMobileNumber(isValid);
+    // setMobileNumber(input);
+  };
+
+  React.useEffect(()=>{
+    const form = formRef.current;
+    const check =async (e:Event)=>{
+      e.preventDefault();
+      // API call
+      // const email= emailRef.current?.value;
+      // const mobile= mobileRef.current?.value;
+
+
+      // const res = await fetch('anyroute', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     email,
+      //     mobile
+      //   })
+      // });
+  
+      // if (res.ok) {
+      //   navigate('spin');
+      // } else {
+      // 
+      // }
+      navigate('spin');
+
+
+    }
+
+    form!.addEventListener('submit',(event:Event)=>{check(event)})
+  },[])
   return (
     <div className="h-screen w-screen bg-[#C6EFC8] relative">
       {/* FLowers */}
@@ -14,17 +61,17 @@ const Home = () => {
 
       {/* Main */}
 
-      <div className="flex flex-col items-center w-full  justify-center md:flex-row md:h-full lg:p-12">
+      <div className="flex flex-col items-center w-full  justify-center md:flex-row md:h-full">
         <Wheel />
-        <div className="flex flex-col items-center w-full  justify-center gap-4 pr-6 lg:pr-0">
-          <div className="font-poppins text-3xl w-full leading-normal font-extrabold z-20 lg:text-5xl lg:pb-10">
-            <span className="text-left w-min ">
+        <div className="flex flex-col items-center w-full  justify-center gap-4 lg:pr-0 md:w-3/4 lg:w-1/2">
+          <div className="font-poppins flex justify-center items-center text-3xl w-full leading-normal font-extrabold z-20 px-10 lg:text-4xl lg:pb-10">
+            <span className="">
               This is how EngageBud looks like in action
             </span>
           </div>
-          <form className="w-4/5 gap-4 flex flex-col z-10">
+          <form className="w-4/5 gap-4 flex flex-col z-10" action="/" method="POST" ref={formRef}>
             <label className=" flex items-start p-4 gap-6 h-24  bg-white border-b-2 border-black rounded-tl-md rounded-tr-md">
-              <div className="h-full  flex items-center justify-center w-1/12">
+              <div className="lg:p-2 flex items-center justify-center w-1/12">
                 <svg
                   width="66"
                   height="53"
@@ -40,13 +87,13 @@ const Home = () => {
                 </svg>
               </div>
               <div className="flex flex-col items-start w-4/5 h-full justify-center text-[#49454F] text-lg font-poppins overflow-x-hidden ">
-                <span className="lg:text-2xl"> Email</span>
-                <input className="" type="text" placeholder="joe@gmail.com" />
+                <span className="lg:text-xl"> Email</span>
+                <input className="" type="email" placeholder="joe@gmail.com" id="email" required  ref={emailRef}/>
               </div>
             </label>
 
-            <label className=" flex items-start p-4 gap-6 h-24  bg-white border-b-2 border-black rounded-tl-md rounded-tr-md">
-              <div className="h-full  flex items-center justify-center w-1/12">
+            <label className={`flex items-start p-4 gap-6 h-24  bg-white border-b-2 rounded-tl-md rounded-tr-md ${isValidMobileNumber ? " border-black": "border-red-600"}`}>
+              <div className="lg:p-2 flex items-center justify-center w-1/12 ">
                 <svg
                   width="50"
                   height="50"
@@ -62,22 +109,23 @@ const Home = () => {
                 </svg>
               </div>
               <div className="flex flex-col items-start w-4/5 h-full justify-center text-[#49454F] text-lg font-poppins overflow-x-hidden">
-                <span className="lg:text-2xl"> Phone Number</span>
-                <input className="" type="text" placeholder="+91 98256 XXXXX" />
+                <span className="lg:text-xl"> Phone Number</span>
+                <input className="" type="text" placeholder="+91 98256 XXXXX" id="mobile" ref={mobileRef} onChange={handleMobileNumberChange} required/>
               </div>
             </label>
             <label className="rounded-md border-2 border-black flex h-24 justify-center items-center gap-2 p-2">
               <input
                 type="checkbox"
                 className="h-8 w-8 flex-none accent-black"
+                required
               />
               <span className="text-sm text-left lg:text-base">
                 I agree to receiving recurring automated messages at the number
                 I have provided. Consent is not a condition to purchase.
               </span>
             </label>
-            <button className="rounded-full w-full p-6 font-poppins text-white text-2xl font-extrabold  bg-[#146531]">
-              Try your luck
+            <button className="rounded-full w-full p-6 font-poppins text-white text-2xl font-extrabold  bg-[#146531]" type="submit">
+             Try your luck
             </button>
           </form>
 
@@ -87,7 +135,7 @@ const Home = () => {
               *If you win, you can claim your coupon for 10 minutes only!
             </span>
           </div>
-          <div className="flex gap-2 text-2xl font-poppins font-bold items-center justify-center">
+          <div className="flex gap-2 text-2xl font-poppins font-bold items-center justify-center z-10" >
             <span>No I don't feel lucky</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
