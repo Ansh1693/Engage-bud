@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Result from "./components/Result";
 import Home from "./components/home";
 import { MyComponent, MyContext } from "./components/MyContext";
