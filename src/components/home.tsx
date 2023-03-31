@@ -1,8 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import BottomFlower from "../assets/BottomFlower";
 import TopFlower from "../assets/TopFlower";
-import { MyContext } from "./MyContext";
 
 import Wheel from "../assets/Wheel";
 import WheelPage from "./WheelPage";
@@ -11,9 +9,7 @@ const Home = () => {
   const emailRef = React.useRef<HTMLInputElement>(null);
   const mobileRef = React.useRef<HTMLInputElement>(null);
   const formRef = React.useRef<HTMLFormElement>(null);
-  const navigate = useNavigate();
-  const [isValidMobileNumber, setIsValidMobileNumber] =
-    React.useState<boolean>(false);
+  const [isValidMobileNumber, setIsValidMobileNumber] = React.useState<boolean>(false);
   const [isValidEmail, setIsValidEmail] = React.useState<boolean>(false);
   const [submit, setSubmit] = React.useState<boolean>(false);
 
@@ -31,11 +27,6 @@ const Home = () => {
     const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input);
     setIsValidEmail(isValid);
   };
-
-  // React.useEffect(()=>{
-  //   const form = formRef.current;
-
-  // },[])
 
   const check = (e: Event) => {
     e.preventDefault();
@@ -183,7 +174,7 @@ const Home = () => {
               <button
                 className="rounded-full w-full p-6 font-poppins text-white text-2xl font-extrabold  bg-[#146531]"
                 type="submit"
-                onClick={(event:any) => {
+                onClick={(event: any) => {
                   check(event);
                 }}
               >

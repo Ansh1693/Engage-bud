@@ -1,19 +1,19 @@
 import React from "react";
 import BottomFlower from "../assets/BottomFlower";
 import TopFlower from "../assets/TopFlower";
-import Result from "./Result";
 import Wheel ,{list}from "./Wheel";
 import { MyContext } from "./MyContext";
 import { useNavigate } from "react-router-dom";
 
 const WheelPage = () => {
+    //for global result
     const{result,setResult}=React.useContext(MyContext);
     const navigate = useNavigate();
 
     React.useEffect(() => {
         const wheel = document.getElementById("wheel");
         const button = document.getElementById("onSpin");
-    
+    //spin value function
         let value: number = Math.ceil(Math.random() * 6000);
         const handleClick = () => {
           wheel!.classList.add("transition-wheel");
@@ -22,7 +22,7 @@ const WheelPage = () => {
           wheel!.style.transform = `rotate(${value}deg)`;
           value2 = ((360 - value%360) / 60) + 1;
           if(value2===7) value2=1;
-            setResult(list[value2-1].name);  
+            setResult(list[value2-1].name);  //setting result
         };
     
         button?.addEventListener("click", () => {
@@ -33,7 +33,7 @@ const WheelPage = () => {
           wheel.classList.remove("transition-wheel");
           const actualDeg: number = value % 360;
           wheel!.style.transform = `rotate(${actualDeg}deg)`;
-
+          //navigate to next
           navigate('/result')
         });
         
@@ -43,7 +43,6 @@ const WheelPage = () => {
       <TopFlower />
       <BottomFlower />
       <div className="h-full w-full flex justify-center items-center">
-        {/* <Result name="Hello"/> */}
         <Wheel />
       </div>
     </div>

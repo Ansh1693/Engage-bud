@@ -1,5 +1,5 @@
-import React, { Children } from "react";
-
+import React from "react";
+//context for result
 interface MyContext {
   result: string;
   setResult: React.Dispatch<React.SetStateAction<string>>;
