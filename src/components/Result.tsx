@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Result: React.FunctionComponent = () => {
   const { result } = React.useContext(MyContext);
   const navigate= useNavigate();
-  const [coupon, setCoupon] = React.useState("XAXPDF20");
+  const coupon: string ="XAXPDF20";
   return (
     <div className="h-screen w-screen bg-[#C6EFC8] relative">
       {/* FLowers */}

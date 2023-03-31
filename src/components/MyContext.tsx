@@ -1,11 +1,11 @@
 import React from "react";
 //context for result
-interface MyContext {
+interface MyContex {
   result: string;
   setResult: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const MyContext = React.createContext<MyContext>({
+const MyContext = React.createContext<MyContex>({
   result: "",
   setResult: (value) => {},
 });

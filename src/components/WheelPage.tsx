@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const WheelPage = () => {
     //for global result
-    const{result,setResult}=React.useContext(MyContext);
+    const{setResult}=React.useContext(MyContext);
     const navigate = useNavigate();
 
     React.useEffect(() => {
